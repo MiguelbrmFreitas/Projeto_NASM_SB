@@ -7,8 +7,8 @@
 
 %macro endloop 1
 	cmp %1,0
-	jnz %$inicioLoop 	                 
-	%pop             
+	jnz %$inicioLoop
+	%pop
 %endmacro
 
 section .dat
@@ -19,7 +19,7 @@ segment .bss
 segment .text
   global  main
 	main:
-		enter	0,0              
+		enter	0,0
 		pusha
 
 mov ecx, 10 ;Número de iterações
