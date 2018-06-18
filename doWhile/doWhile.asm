@@ -6,9 +6,10 @@
 %endmacro
 
 %macro endloop 1
-	cmp %1,0
-	jnz %$inicioLoop
-	%pop
+	cmp %1,0  ;verifica se a condição ainda é verdadeira
+	jnz %$inicioLoop ; se for verdadeira repete 
+					; caso contrário encerra
+	%pop 	
 %endmacro
 
 section .dat

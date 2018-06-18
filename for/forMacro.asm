@@ -1,21 +1,26 @@
 %include "asm_io.inc"
 
-%macro inicio 1
+%macro inicializar 1
+	%push inicializar
 	mov ecx, %1
 	%pop
 %endmacro
 
-%macro loop 1
-	%push inicio
+%macro loop 2
+	%push loop
 	%$inicioLoop:
-	cmp %1,0
-	jnz %$inicioLoop
-	%push sai_loop
-	%$sai_loop:
+	cmp %1,%2
+	jz $%saiLoop
+	jnz $corpoLoop 
+%endmacro
+
+%macro saiLoop 0
+	%$saiLoop:
 	%pop
 %endmacro
 
 %macro incrementar 1
+	%push incrementar
 	inc %1
 	%pop
 %endmacro
@@ -31,14 +36,17 @@ segment .text
 		enter	0,0
 		pusha
 
-inicio 10 ;Número de iterações
-loop ecx
+inicializar 0
+
+corpo_loop:
 	mov eax, ecx
 	call print_int
 	mov eax, newline
 	call print_string
-	sub ecx, 1
 	incrementar ecx
+
+loop ecx, 10 ; realiza o loop 10 vezes
+	sai_loop
 
 popa
 mov	eax, 0
