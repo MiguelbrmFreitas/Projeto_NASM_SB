@@ -3,7 +3,7 @@
 %macro ifMacro 1
 	cmp %1,1
 	je %$true
-	j %false
+	jmp %$false
 	%$true:
 		mov eax, msgTrue
 		call print_string
@@ -14,14 +14,13 @@
 		call print_string
 		mov eax, newline
 		call print_string
-	%pop
 %endmacro
 
 
 section .dat
-newline 		db "", 0xa, 0
-msgTrue			db "True", 0
-msgFalse		db "False", 0
+newline 	db "", 0xa, 0
+msgTrue		db "True", 0
+msgFalse	db "False", 0
 
 segment .bss
 
