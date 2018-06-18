@@ -1,24 +1,8 @@
 %include "asm_io.inc"
 
-%macro ifMacro 1
-	cmp %1,1
-	je %$true
-	jmp %$false
-	%$true:
-		mov eax, msgTrue
-		call print_string
-		mov eax, newline
-		call print_string
-	%$false:
-		mov eax, msgFalse
-		call print_string
-		mov eax, newline
-		call print_string
-%endmacro
-
 %macro if 1
 	%push if
-	j%−1 %$ifnot
+	jne %$ifnot
 %endmacro
 %macro else 0
 	%ifctx if
@@ -55,8 +39,8 @@ segment .text
 		enter	0,0
 		pusha
 
-mov ecx, 1 ;True
-;mov ecx, 0 ;False
+;mov ecx, 1 ;True
+mov ecx, 0 ;False
 
 cmp ecx,1
 if e
@@ -65,12 +49,11 @@ if e
 	mov eax, newline
 	call print_string
 else
-	mov eax, msgTrue
+	mov eax, msgFalse
 	call print_string
 	mov eax, newline
 	call print_string
 endif
-
 
 popa
 mov	eax, 0
