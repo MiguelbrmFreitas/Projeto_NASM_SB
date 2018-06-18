@@ -38,7 +38,7 @@ loop ecx
 	mov eax, newline
 	call print_string
 	sub ecx, 1
-	incrementar
+	incrementar ecx
 
 popa
 mov	eax, 0
