@@ -2,7 +2,7 @@
 
 %macro if 1
 	%push if
-	jne %$ifnot
+	j%-1 %$ifnot
 %endmacro
 %macro else 0
 	%ifctx if
@@ -39,8 +39,8 @@ segment .text
 		enter	0,0
 		pusha
 
-;mov ecx, 1 ;True
-mov ecx, 0 ;False
+mov ecx, 1 ;True
+;mov ecx, 0 ;False
 
 cmp ecx,1
 if e
