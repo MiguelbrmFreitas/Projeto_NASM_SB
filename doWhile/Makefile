@@ -6,7 +6,7 @@ CFLAGS =  -c -m32
 LFLAGS = -m32
 NASMFLAGS = -f elf -F stabs
 
-PROG = fibonacci
+PROG = doWhile
 
 OBJS = asm_io.o $(PROG).o
 
