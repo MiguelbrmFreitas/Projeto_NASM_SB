@@ -11,6 +11,7 @@
 	cmp %1,0
 	jnz %$inicioLoop
 	%push sai_loop
+	%$sai_loop:
 	%pop
 %endmacro
 
