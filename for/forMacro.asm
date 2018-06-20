@@ -11,7 +11,7 @@
 	%$inicioLoop:
 	cmp %1,%2
 	jz $%saiLoop
-	jnz $corpoLoop 
+	jnz corpoLoop 
 %endmacro
 
 %macro saiLoop 0
