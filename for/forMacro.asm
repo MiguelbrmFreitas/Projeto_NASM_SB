@@ -37,14 +37,16 @@ segment .text
 
 inicializar 0
 
-loop ecx, 10 ; realiza o loop 10 vezes
-corpo_loop:
-	mov eax, ecx
-	call print_int
-	mov eax, newline
-	call print_string
-	incrementar ecx
-	sai_loop
+labelLoop:
+	loop ecx, 10 ; realiza o loop 10 vezes
+		corpoLoop:
+			mov eax, ecx
+			call print_int
+			mov eax, newline
+			call print_string
+			incrementar ecx
+			jmp labelLoop
+			saiLoop
 
 popa
 mov	eax, 0
