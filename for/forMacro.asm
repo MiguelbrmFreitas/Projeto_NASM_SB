@@ -8,7 +8,6 @@
 
 %macro loop 2
 	%push loop
-	%$inicioLoop:
 	cmp %1,%2
 	jz $%saiLoop
 	jnz corpoLoop 
@@ -38,14 +37,13 @@ segment .text
 
 inicializar 0
 
+loop ecx, 10 ; realiza o loop 10 vezes
 corpo_loop:
 	mov eax, ecx
 	call print_int
 	mov eax, newline
 	call print_string
 	incrementar ecx
-
-loop ecx, 10 ; realiza o loop 10 vezes
 	sai_loop
 
 popa
