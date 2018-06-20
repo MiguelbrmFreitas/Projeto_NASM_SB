@@ -1,3 +1,5 @@
+; Autor: Miguel Barreto Rezende Marques de Freitas
+
 %include "asm_io.inc"
 
 %macro inicializar 1
